@@ -59,7 +59,7 @@ struct Node {
 };
 
 Node node[MAX_NODE];
-int nodeCnt;
+int nodeCnt = 0;
 Node* head;
 
 Node* getNode(int data) {
@@ -74,16 +74,16 @@ void init()
 	//nodeCnt = 0;
 }
 
-void addNode2Head(int data)
+void addNode2Head(int data) 
 {
-	Node* newone;
-	Node* ptr = head;
-	
-	newone = getNode(data);
+	Node *newone;
+
+    newone = getNode(data);
+	newone->next = head->next;
 	head->next = newone;
 }
 
-void addNode2Tail(int data)
+void addNode2Tail(int data) 
 {
 	Node* ptr = head;
 	while (ptr->next)
@@ -93,12 +93,12 @@ void addNode2Tail(int data)
 	ptr->next = getNode(data);
 }
 
-void addNode2Num(int data, int num)
+void addNode2Num(int data, int num) 
 {
 	int n = 1;
 	Node* ptr = head;
 	Node* curr;
-	while (n < num)
+	while (n < num && ptr->next)
 	{
 		if ((ptr->next) == nullptr)
 			ptr->next = getNode(0);
@@ -116,24 +116,23 @@ void removeNode(int data)
 	Node* ptr = head;
 	Node* curr;
     
-	while (ptr->next)
+	while (ptr)
 	{
-        if (ptr->next->data == data)
-        {
-            curr = ptr->next;
-        	ptr->next = curr->next;
-            break;
-        }
+		if (ptr->data == data)
+		{
+		    curr = ptr;
+		    ptr->next = curr->next->next;
+		    break;
+		}
 		ptr = ptr->next;
 	}
 }
 
-int getList(int output[MAX_NODE])
-{
-	Node* ptr;
-	int cnt = 0;
 
-	ptr = head->next;
+int getList(int output[MAX_NODE]) 
+{
+	Node* ptr = head->next;
+	int cnt = 0;
 	while (ptr)
 	{
 		output[cnt] = ptr->data;
@@ -142,7 +141,6 @@ int getList(int output[MAX_NODE])
 	}
 	return (cnt);
 }
-
 int main(void) {
 	//setbuf(stdout, NULL);
 	//freopen("sll_input.txt", "r", stdin);
