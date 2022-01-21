@@ -100,7 +100,7 @@ void addNode2Num(int data, int num)
 	Node* curr;
 	while (n < num)
 	{
-		if ((ptr->next) == NULL)
+		if ((ptr->next) == nullptr)
 			ptr->next = getNode(0);
 		ptr = ptr->next;
 		n++;
