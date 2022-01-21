@@ -115,19 +115,17 @@ void removeNode(int data)
 {
 	Node* ptr = head;
 	Node* curr;
-
-	while (ptr->next->data == data)
+    
+	while (ptr->next)
 	{
-		if (ptr->next->data == data)
-		{
-			curr = ptr->next;
-			ptr->next = curr->next;
-			break;
-		}
+        if (ptr->next->data == data)
+        {
+            curr = ptr->next;
+        	ptr->next = curr->next;
+            break;
+        }
 		ptr = ptr->next;
 	}
-	curr = ptr->next;
-	ptr->next = curr->next;
 }
 
 int getList(int output[MAX_NODE])
