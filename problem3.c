@@ -19,11 +19,9 @@ static void run() {
 		int output[MAX_NODE] = { 0 };
 
 		scanf("%d", &cmd);
-		printf("cmd = %d\n", cmd);
 		switch (cmd) {
 		case ADD_HEAD:
 			scanf("%d", &data);
-			printf("data = %d\n", data);
 			addNode2Head(data);
 			break;
 		case ADD_TAIL:
