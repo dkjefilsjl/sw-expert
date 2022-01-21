@@ -116,14 +116,14 @@ void removeNode(int data)
 	Node* ptr = head;
 	Node* curr;
     
-	while (ptr)
+	while (ptr->next)
 	{
-		if (ptr->data == data)
-		{
-		    curr = ptr;
-		    ptr->next = curr->next->next;
-		    break;
-		}
+        if (ptr->next->data == data)
+        {
+            curr = ptr->next;
+        	ptr->next = curr->next;
+            break;
+        }
 		ptr = ptr->next;
 	}
 }
